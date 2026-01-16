@@ -12,7 +12,8 @@
         <b>Автор:</b> {{book.author}}
         <b>Дата публикации:</b> {{book.publication_date}}
         <b>Аннотация:</b> {{book.annotation}}
-        <b>Жанр:</b> {{book.genre_id}}
+        <b>Жанр:</b> {{book.genre_name}}
+        <a href="{{ url_for('print_books_by_genre', genre_id=book.genre_id) }}">{{ book.genre_name }}</a>
         <b>Прочитана:</b> {{book.is_read}}
     </li>
     {%endfor%}
