@@ -32,3 +32,4 @@ class Book(Base):
     def __repr__(self):
         return f"<Book(id={self.id}, publication date={self.publication_date}, title={self.title}, author={self.author}, annotation={self.annotation}, genre id={self.genre_id}"
 
+#

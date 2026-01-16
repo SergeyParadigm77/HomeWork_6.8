@@ -47,3 +47,5 @@ def books_by_genre(genre_id):
         books = session.query(Book).filter(Book.genre_id == genre_id).order_by(Book.publication_date.desc()).all()
         books_data = books_prepared(books)
         return books_data
+
+#
