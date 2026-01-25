@@ -4,7 +4,7 @@
     <title>Список из 15 книг отсортированных по дате сохранения в базу:</title>
 </head>
 <body>
-<h1>Список из 15 книг отсортированных по дате сохранения в базу</h1>
+<h1>Список из 15 книг отсортированных по дате сохранения в базу:</h1>
 <ul>
     {%for book in books%}
     <li>
@@ -12,12 +12,11 @@
         <b>Автор:</b> {{book.author}}
         <b>Дата публикации:</b> {{book.publication_date}}
         <b>Аннотация:</b> {{book.annotation}}
-        <b>Жанр:</b> {{book.genre_name}}
-        <a href="{{ url_for('print_books_by_genre', genre_id=book.genre_id) }}">{{ book.genre_name }}</a>
+        <b>Жанр:</b>
+        <a href="{{ url_for('print_books_by_genre', genre_id=book.genre_id) }}">{{book.genre_name}}</a>
         <b>Прочитана:</b> {{book.is_read}}
     </li>
     {%endfor%}
 </ul>
 </body>
 </html>
-#

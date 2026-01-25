@@ -1,3 +1,4 @@
+from sqlalchemy import desc, asc
 from sqlalchemy.orm import Session
 from app import engine
 from models import Book, Genre
@@ -35,16 +36,23 @@ def books_prepared(books):
     return books_data
 
 
+def get_all_books():
+    with Session(engine) as session:
+        books = session.query(Book).order_by(Book.publication_date).all()
+        books_data = books_prepared(books)
+        return books_data
+
+
 def get_last_15_books():
     with Session(engine) as session:
-        books = session.query(Book).order_by(Book.publication_date.desc()).limit(3).all()
+        books = session.query(Book).order_by(asc(Book.publication_date)).limit(15).all()
         books_data = books_prepared(books)
         return books_data
 
 
 def books_by_genre(genre_id):
     with Session(engine) as session:
-        books = session.query(Book).filter(Book.genre_id == genre_id).order_by(Book.publication_date.desc()).all()
+        books = session.query(Book).filter(Book.genre_id == genre_id).order_by(Book.publication_date).all()
         books_data = books_prepared(books)
         return books_data
 
